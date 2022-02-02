@@ -1,3 +1,8 @@
+// const { create } = require('mochawesome-report-generator');
+// const { fetchProducts } = require('./helpers/fetchProducts');
+
+console.log(fetchProducts('computador'));
+
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -40,4 +45,22 @@ function createCartItemElement({ sku, name, salePrice }) {
   return li;
 }
 
-window.onload = () => { };
+async function criaItem() {
+  const itens = await fetchProducts('computador');
+  const sessaoItens = document.querySelector('.items');
+  
+  itens.forEach((item) => {
+    const produto = {
+      sku: item.id,
+      image: item.thumbnail,
+      name: item.title,
+      salePrice: item.price,
+    };
+    
+    sessaoItens.appendChild(createProductItemElement(produto));
+  });
+}
+criaItem();
+
+window.onload = () => {
+};
