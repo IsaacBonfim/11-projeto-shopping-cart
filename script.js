@@ -101,6 +101,15 @@ async function criaItem() {
 }
 criaItem();
 
+function esvaziaCarrinho() {
+  carrinho.innerHTML = '';
+  valorItens.innerText = '0.00';
+  saveCartItems('itens', '');
+}
+
+const esvaziar = document.querySelector('.empty-cart');
+esvaziar.addEventListener('click', esvaziaCarrinho);
+
 window.onload = () => {
   if (localStorage.getItem('itens')) {
     const itenSalvo = getSavedCartItems('itens');
