@@ -1,4 +1,17 @@
 const carrinho = document.querySelector('.cart__items');
+const valorItens = document.querySelector('.total-price');
+
+function somaValor(valor) {
+  const novoValor = parseFloat(valorItens.innerText) + parseFloat(valor);
+
+  valorItens.innerText = novoValor;
+}
+
+function subtraiValor(valor) {
+  const novoValor = parseFloat(valorItens.innerText) - valor;
+
+  valorItens.innerText = novoValor;
+}
 
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
@@ -32,10 +45,15 @@ function getSkuFromProductItem(item) {
 
 function cartItemClickListener(event) {
   const item = event.target;
+  const array = item.innerText.split(' ');
+  const valor = array[array.length - 1].split('');
 
   carrinho.removeChild(item);
 
   saveCartItems('itens', carrinho.innerHTML);
+
+  valor.shift();
+  subtraiValor(valor.join(''));
 }
 
 function createCartItemElement({ sku, name, salePrice }) {
@@ -59,6 +77,8 @@ async function insereNoCarrinho(id) {
   carrinho.appendChild(createCartItemElement(itemCarrinho));
 
   saveCartItems('itens', carrinho.innerHTML);
+
+  somaValor(itemCarrinho.salePrice);
 }
 
 async function criaItem() {
@@ -90,7 +110,13 @@ window.onload = () => {
     const linhas = document.querySelectorAll('li');
 
     linhas.forEach((li) => {
+      const array = li.innerText.split(' ');
+      const valor = array[array.length - 1].split('');
+      
       li.addEventListener('click', cartItemClickListener);
+
+      valor.shift();
+      somaValor(valor.join(''));
     });
   }
 };
