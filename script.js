@@ -1,8 +1,3 @@
-// const { create } = require('mochawesome-report-generator');
-// const { fetchProducts } = require('./helpers/fetchProducts');
-
-console.log(fetchProducts('computador'));
-
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -45,11 +40,25 @@ function createCartItemElement({ sku, name, salePrice }) {
   return li;
 }
 
+async function insereNoCarrinho(id) {
+  const item = await fetchItem(id);
+  const carrinho = document.querySelector('.cart__items');
+
+  const itemCarrinho = {
+    sku: item.id,
+    image: item.thumbnail,
+    name: item.title,
+    salePrice: item.price,
+  };
+
+  carrinho.appendChild(createCartItemElement(itemCarrinho));
+}
+
 async function criaItem() {
   const itens = await fetchProducts('computador');
   const sessaoItens = document.querySelector('.items');
   
-  itens.forEach((item) => {
+  itens.forEach((item, index) => {
     const produto = {
       sku: item.id,
       image: item.thumbnail,
@@ -58,6 +67,9 @@ async function criaItem() {
     };
     
     sessaoItens.appendChild(createProductItemElement(produto));
+    
+    const botao = document.querySelectorAll('.item__add');
+    botao[index].addEventListener('click', () => insereNoCarrinho(produto.sku));
   });
 }
 criaItem();
