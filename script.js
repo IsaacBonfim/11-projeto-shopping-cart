@@ -123,8 +123,8 @@ const esvaziar = document.querySelector('.empty-cart');
 esvaziar.addEventListener('click', esvaziaCarrinho);
 
 window.onload = () => {
-  if (localStorage.getItem('itens')) {
-    const itenSalvo = getSavedCartItems('itens');
+  if (localStorage.getItem('cartItems')) {
+    const itenSalvo = getSavedCartItems('cartItems');
 
     carrinho.innerHTML = itenSalvo;
 
