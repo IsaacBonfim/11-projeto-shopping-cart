@@ -4,13 +4,13 @@ const valorItens = document.querySelector('.total-price');
 function somaValor(valor) {
   const novoValor = parseFloat(valorItens.innerText) + parseFloat(valor);
 
-  valorItens.innerText = novoValor;
+  valorItens.innerText = novoValor.toFixed(2);
 }
 
 function subtraiValor(valor) {
   const novoValor = parseFloat(valorItens.innerText) - valor;
 
-  valorItens.innerText = novoValor;
+  valorItens.innerText = novoValor.toFixed(2);
 }
 
 function createProductImageElement(imageSource) {
@@ -39,9 +39,9 @@ function createProductItemElement({ sku, name, image }) {
   return section;
 }
 
-function getSkuFromProductItem(item) {
-  return item.querySelector('span.item__sku').innerText;
-}
+// function getSkuFromProductItem(item) {
+//   return item.querySelector('span.item__sku').innerText;
+// }
 
 function cartItemClickListener(event) {
   const item = event.target;
@@ -56,11 +56,15 @@ function cartItemClickListener(event) {
   subtraiValor(valor.join(''));
 }
 
-function createCartItemElement({ sku, name, salePrice }) {
+function createCartItemElement({ sku, image, name, salePrice }) {
   const li = document.createElement('li');
+  const Imagem = `<img class="item__image" src="${image}">`;
+  const Texto = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}</div>`;
+
   li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.innerHTML = `${Imagem} ${Texto}`;
   li.addEventListener('click', cartItemClickListener);
+  
   return li;
 }
 
