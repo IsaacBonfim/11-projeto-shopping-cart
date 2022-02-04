@@ -97,7 +97,7 @@ async function criaItem() {
   const itens = await fetchProducts('computador');
   carregado(sessaoItens);
   
-  itens.forEach((item, index) => {
+  itens.results.forEach((item, index) => {
     const produto = {
       sku: item.id,
       image: item.thumbnail,
