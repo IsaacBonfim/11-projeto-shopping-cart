@@ -6,8 +6,7 @@ const fetchProducts = async (produto) => {
   const url = `https://api.mercadolibre.com/sites/MLB/search?q=${produto}`;
 
   const result = await fetch(url)
-    .then((response) => response.json())
-    .catch((error) => console.log(`Algo deu errado! \n${error}`));
+    .then((response) => response.json());
     
   return result;
 };
