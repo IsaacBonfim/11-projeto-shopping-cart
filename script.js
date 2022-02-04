@@ -81,9 +81,21 @@ async function insereNoCarrinho(id) {
   somaValor(itemCarrinho.salePrice);
 }
 
+function loading(item) {
+  const load = createCustomElement('section', 'loading', 'Loading');
+  item.appendChild(load);
+}
+
+function carregado(item) {
+  const load = document.querySelector('.loading');
+  item.removeChild(load);
+}
+
 async function criaItem() {
-  const itens = await fetchProducts('computador');
   const sessaoItens = document.querySelector('.items');
+  loading(sessaoItens);
+  const itens = await fetchProducts('computador');
+  carregado(sessaoItens);
   
   itens.forEach((item, index) => {
     const produto = {
