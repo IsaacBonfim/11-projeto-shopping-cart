@@ -118,6 +118,8 @@ body {
 .item .item__image {
   align-self: center;
   width: 90%;
+  border-radius: 15px;
+  box-shadow: 1px 2px 4px gray;
 }
 
 .item .item__add {
@@ -132,8 +134,16 @@ body {
 
 .item .item__add:hover {
   color: aquamarine;
+  font-weight: 700;
   box-shadow: 1px 2px 2px black,
     -1px -1px 2px black;
+}
+
+.item .item__add:active {
+  color: white;
+  background-color: darkblue;
+  box-shadow: 0 0 0 black,
+    0 0 0 black;
 }
 
 .cart {
@@ -154,8 +164,21 @@ body {
   display: flex;
   align-items: center;
   border: 1px solid lightgrey;
+  border-radius: 10px;
   margin: 5px;
   box-shadow: 1px 2px 4px gray;
+}
+
+.cart__item:hover {
+  background-color: lightblue;
+  border: 2px solid greenyellow;
+}
+
+.cart__image {
+  border: 1px solid lightgray;
+  border-radius: 100%;
+  margin: 1%;
+  box-shadow: 1px 1px 3px gray;
 }
 
 .empty-cart {

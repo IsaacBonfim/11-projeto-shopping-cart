@@ -58,7 +58,7 @@ function cartItemClickListener(event) {
 
 function createCartItemElement({ sku, image, name, salePrice }) {
   const li = document.createElement('li');
-  const Imagem = `<img class="item__image" src="${image}">`;
+  const Imagem = `<img class="cart__image" src="${image}">`;
   const Texto = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}</div>`;
 
   li.className = 'cart__item';
