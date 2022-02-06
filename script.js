@@ -2,15 +2,15 @@ const carrinho = document.querySelector('.cart__items');
 const valorItens = document.querySelector('.total-price');
 
 function somaValor(valor) {
-  const novoValor = parseFloat(valorItens.innerText) + parseFloat(valor);
+  const novoValor = parseFloat(valorItens.innerText).toFixed(2) + parseFloat(valor).toFixed(2);
 
-  valorItens.innerText = novoValor.toFixed(2);
+  valorItens.innerText = novoValor;
 }
 
 function subtraiValor(valor) {
-  const novoValor = parseFloat(valorItens.innerText) - valor;
+  const novoValor = parseFloat(valorItens.innerText).toFixed(2) - valor.toFixed(2);
 
-  valorItens.innerText = novoValor.toFixed(2);
+  valorItens.innerText = novoValor;
 }
 
 function createProductImageElement(imageSource) {
