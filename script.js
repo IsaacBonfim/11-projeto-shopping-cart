@@ -4,13 +4,13 @@ const valorItens = document.querySelector('.total-price');
 function somaValor(valor) {
   const novoValor = parseFloat(valorItens.innerText) + parseFloat(valor);
 
-  valorItens.innerText = novoValor;
+  valorItens.innerText = novoValor.toFixed(2);
 }
 
 function subtraiValor(valor) {
   const novoValor = parseFloat(valorItens.innerText) - valor;
 
-  valorItens.innerText = novoValor;
+  valorItens.innerText = novoValor.toFixed(2);
 }
 
 function createProductImageElement(imageSource) {
