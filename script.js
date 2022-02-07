@@ -8,7 +8,7 @@ function somaValor(valor) {
 }
 
 function subtraiValor(valor) {
-  const novoValor = parseFloat(valorItens.innerText) - valor;
+  const novoValor = parseFloat(valorItens.innerText) - parseFloat(valor);
 
   valorItens.innerText = novoValor;
 }
@@ -59,10 +59,10 @@ function cartItemClickListener(event) {
 function createCartItemElement({ sku, image, name, salePrice }) {
   const li = document.createElement('li');
   const Imagem = `<img class="cart__image" src="${image}">`;
-  const Texto = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}</div>`;
+  const Texto = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
 
   li.className = 'cart__item';
-  li.innerHTML = `${Imagem} ${Texto}`;
+  li.innerHTML = `${Imagem}${Texto}`;
   li.addEventListener('click', cartItemClickListener);
   
   return li;
